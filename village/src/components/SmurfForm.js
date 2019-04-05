@@ -22,8 +22,9 @@ class SmurfForm extends Component {
     if (this.state.name && this.state.age && this.state.height) {
 
       axios.post('http://localhost:3333/smurfs', {...this.state})
-      .then(res => console.log('smurf submitted'))
-      .catch(err => console.log('smurf could not be submitted'))
+        .then(res => console.log('smurf submitted'))
+        .catch(err => console.log('smurf could not be submitted'))
+
 
       this.setState({
         name: '',

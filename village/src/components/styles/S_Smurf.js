@@ -11,9 +11,14 @@ const SmurfCard = styled.div `
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  padding: 40px 0 ;
+  padding: 30px 0 ;
   margin: 4px;
   box-shadow: 0px 3px 12px -2px rgba(0,0,0,1);
+
+  strong {
+    cursor: pointer;
+  }
+
 
 `
 export { SmurfCard }
