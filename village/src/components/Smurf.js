@@ -1,12 +1,13 @@
 import React from 'react';
 
+import { SmurfCard } from './styles/S_Smurf'
 const Smurf = props => {
   return (
-    <div className="Smurf">
-      <h3>{props.name}</h3>
+    <SmurfCard>
+      <h2>{props.name}</h2>
       <strong>{props.height} tall</strong>
       <p>{props.age} smurf years old</p>
-    </div>
+    </SmurfCard>
   );
 };
 
@@ -17,4 +18,3 @@ Smurf.defaultProps = {
 };
 
 export default Smurf;
-

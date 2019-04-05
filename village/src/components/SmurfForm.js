@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import axios from 'axios'
 
+import { AddSmurfForm, SmurfButton, SmurfInput } from './styles/S_SmurfForm'
+
 class SmurfForm extends Component {
   constructor(props) {
     super(props);
@@ -30,6 +32,8 @@ class SmurfForm extends Component {
     } else {
       alert('Please fill all fields')
     }
+
+
   }
 
 
@@ -40,27 +44,27 @@ class SmurfForm extends Component {
   render() {
     return (
       <div className="SmurfForm">
-        <form onSubmit={this.addSmurf}>
-          <input
+        <AddSmurfForm onSubmit={this.addSmurf}>
+          <SmurfInput
             onChange={this.handleInputChange}
             placeholder="name"
             value={this.state.name}
             name="name"
           />
-          <input
+          <SmurfInput
             onChange={this.handleInputChange}
             placeholder="age"
             value={this.state.age}
             name="age"
           />
-          <input
+          <SmurfInput
             onChange={this.handleInputChange}
             placeholder="height"
             value={this.state.height}
             name="height"
           />
-          <button type="submit">Add to the village</button>
-        </form>
+          <SmurfButton type="submit">Add to the village</SmurfButton>
+        </AddSmurfForm>
       </div>
     );
   }

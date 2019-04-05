@@ -21,6 +21,8 @@ let smurfs = [
     height: '8cm'
   }
 ];
+
+
 server.get('/smurfs', (req, res) => {
   res.json(smurfs);
 });
