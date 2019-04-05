@@ -19,7 +19,9 @@ class App extends Component {
     const data =
       axios.get('http://localhost:3333/smurfs')
         .then(res => this.setState({ smurfs: res.data}))
+        .catch(err => console.log(err))
   }
+
   render() {
     return (
       <div className="App">
