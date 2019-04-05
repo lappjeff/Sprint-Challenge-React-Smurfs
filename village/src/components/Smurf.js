@@ -1,6 +1,9 @@
 import React from 'react';
 
+import PropTypes from 'prop-types'
+
 import { SmurfCard } from './styles/S_Smurf'
+
 const Smurf = props => {
   return (
     <SmurfCard>
@@ -17,4 +20,9 @@ Smurf.defaultProps = {
   age: ''
 };
 
+Smurf.propTypes = {
+  age: PropTypes.number,
+  name: PropTypes.string,
+  height: PropTypes.string,
+}
 export default Smurf;
