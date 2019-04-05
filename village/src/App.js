@@ -32,7 +32,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
+        
         <NavBar>
           <NavLink exact to='/'>Home</NavLink>
           <NavLink to='/smurf-form'>Add A Smurf</NavLink>

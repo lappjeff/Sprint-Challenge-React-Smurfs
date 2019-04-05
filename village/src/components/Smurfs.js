@@ -12,18 +12,20 @@ class Smurfs extends Component {
       </div>
 
       <SmurfContainer>
-          {this.props.smurfs.map(smurf => {
-            return (
-              <Smurf
-                name={smurf.name}
-                id={smurf.id}
-                age={smurf.age}
-                height={smurf.height}
-                key={smurf.id}
-                deleteSmurf={this.props.deleteSmurf}
-              />
-            );
-          })}
+        {this.props.smurfs.length === 0 ? <h1>Gargamel chased the smurfs away!</h1> : null}
+        {this.props.smurfs.map(smurf => {
+          return (
+            <Smurf
+            name={smurf.name}
+            id={smurf.id}
+            age={smurf.age}
+            height={smurf.height}
+            key={smurf.id}
+            deleteSmurf={this.props.deleteSmurf}
+            />
+          );
+        })}
+
       </SmurfContainer>
       </>
     );
