@@ -12,12 +12,12 @@ const AddSmurfForm = styled.form `
 `
 const SmurfButton = styled.button `
   height: 17%;
-  width: 75%;
+  width: 60%;
   margin: 0 auto;
   border-radius: 5px;
   background: white;
   border: none;
-
+  font-size: 27px;
 `
 
 const SmurfInput = styled.input `

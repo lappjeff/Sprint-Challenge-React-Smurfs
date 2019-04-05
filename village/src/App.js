@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Route, NavLink } from 'react-router-dom'
 import axios from 'axios'
 
+import { withRouter } from 'react-router-dom'
+
 import './App.css';
 import { NavBar, } from './components/styles/S_NavBar'
 import SmurfForm from './components/SmurfForm';
@@ -29,14 +31,20 @@ class App extends Component {
       .catch(err => 'Smurf could not be removed')
   }
 
+  updateData = data => {
+    this.setState({ smurfs: data})
+  }
+
   render() {
     return (
       <div className="App">
-        
+
         <NavBar>
           <NavLink exact to='/'>Home</NavLink>
           <NavLink to='/smurf-form'>Add A Smurf</NavLink>
+          <NavLink to='/smurf-update-form'>Update A Smurf</NavLink>
         </NavBar>
+
         <Route exact path='/' render={props => (
           <Smurfs
             smurfs={this.state.smurfs}
@@ -44,7 +52,13 @@ class App extends Component {
         )}/>
 
         <Route path='/smurf-form' render={props => (
-          <SmurfForm />
+          <SmurfFormWithRouter
+            updateData={this.updateData}
+          />
+        )}/>
+
+        <Route path='/smurf-update-form' render={props => (
+          <SmurfFormWithRouter smurfs={this.state.smurfs}/>
         )}/>
 
       </div>
@@ -52,4 +66,5 @@ class App extends Component {
   }
 }
 
+const SmurfFormWithRouter = withRouter(props => <SmurfForm {...props} />)
 export default App;
