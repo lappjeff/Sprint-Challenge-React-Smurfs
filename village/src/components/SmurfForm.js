@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 
+import axios from 'axios'
+
+import AddSmurf from './AddSmurfForm'
+import CurrentSmurfs from './CurrentSmurfs'
+
 class SmurfForm extends Component {
   constructor(props) {
     super(props);
@@ -10,16 +15,31 @@ class SmurfForm extends Component {
     };
   }
 
+
   addSmurf = event => {
     event.preventDefault();
-    // add code to create the smurf using the api
 
-    this.setState({
-      name: '',
-      age: '',
-      height: ''
-    });
+    if (this.state.name && this.state.age && this.state.height) {
+
+      axios.post('http://localhost:3333/smurfs', {...this.state})
+        .then(res => {
+          console.log('smurf submitted')
+          this.props.updateData(res.data)
+        })
+        .catch(err => console.log('smurf could not be submitted'))
+
+      this.setState({
+        name: '',
+        age: '',
+        height: ''
+      });
+    } else {
+      alert('Please fill all fields')
+    }
+
+
   }
+
 
   handleInputChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -28,27 +48,17 @@ class SmurfForm extends Component {
   render() {
     return (
       <div className="SmurfForm">
-        <form onSubmit={this.addSmurf}>
-          <input
-            onChange={this.handleInputChange}
-            placeholder="name"
-            value={this.state.name}
-            name="name"
-          />
-          <input
-            onChange={this.handleInputChange}
-            placeholder="age"
-            value={this.state.age}
-            name="age"
-          />
-          <input
-            onChange={this.handleInputChange}
-            placeholder="height"
-            value={this.state.height}
-            name="height"
-          />
-          <button type="submit">Add to the village</button>
-        </form>
+        {this.props.match.path === '/smurf-form' ?
+          <AddSmurf
+            handleInputChange={this.handleInputChange}
+            addSmurf={this.addSmurf}
+            values={this.state}
+          /> :
+          <CurrentSmurfs
+            handleInputChange={this.handleInputChange}
+            addSmurf={this.addSmurf}
+            values={this.state}
+          />}
       </div>
     );
   }
